@@ -15,6 +15,8 @@ class PostController extends Controller
         $content = $response->getBody()->getContents();
         $contentArray = json_decode($content,true);
         $data = $contentArray['data'];
+        
+        //dd($data);
         return view('post.index',['data'=>$data]);
     }
 

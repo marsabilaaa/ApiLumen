@@ -1,3 +1,11 @@
+@extends('layouts.app')
+@section('content')
+
+@if (session('status'))
+<div class="alert alert-success" role="alert">
+{{ session('status') }}
+</div>
+@endif
 <!doctype html>
 <html lang="en">
 
@@ -5,9 +13,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Post</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
+ 
 </head>
 
 <body class="bg-light">
@@ -62,8 +68,7 @@
             </form>
         </div>
         <!-- AKHIR FORM -->
-        @if(Route::current()->uri == "post/{id}")
-
+        @if (Route::current()->uri == 'post')
         <!-- START DATA -->
         <div class="my-3 p-3 bg-body rounded shadow-sm">
             <table class="table table-striped">
@@ -77,9 +82,10 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $i=1;?>
                     @foreach($data as $item)
                     <tr>
-                        <td>1</td>
+                        <td>{{ $i }}</td>
                         <td>{{$item['title']}}</td>
                         <td>{{$item['content']}}</td>
                         <td>{{date('d/m/Y',strtotime($item['created_at']))}}</td>
@@ -93,6 +99,7 @@
                             <button type="submit" name="submit" class="btn btn-danger btn-sm">Delete</button>
                         </td>
                     </tr>
+                    <?php $i++ ?>
                     @endforeach
                         
                     
@@ -101,7 +108,7 @@
 
         </div>
         <!-- AKHIR DATA -->
-        @endif
+        @endif        
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
@@ -110,3 +117,4 @@
 </body>
 
 </html>
+@endsection

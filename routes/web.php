@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/post', [PostController::class, 'index']);
+Route::get('/post', [PostController::class, 'index'])->name('post');
 Route::post('/post', [PostController::class, 'store']);
 Route::delete('/post/{id}', [PostController::class, 'destroy']);
 Route::get('/post/{id}', [PostController::class, 'edit']);

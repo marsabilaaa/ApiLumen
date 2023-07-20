@@ -9,11 +9,12 @@
 @if (session('status'))
 <div class="alert alert-success" role="alert">
 {{ session('status') }}
+
 </div>
 @endif
 Ini adalah halaman Admin
 <div class="my-3">
-        <a href="{{ route('products.index') }}" class="btn btn-primary">Dashboard</a>
+        <a href="{{ route('post') }}" class="btn btn-primary">Dashboard</a>
 </div>
 </div>
 </div>
