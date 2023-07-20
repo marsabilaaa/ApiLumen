@@ -17,6 +17,7 @@ Route::get('/post', [PostController::class, 'index']);
 Route::post('/post', [PostController::class, 'store']);
 Route::delete('/post/{id}', [PostController::class, 'destroy']);
 Route::get('/post/{id}', [PostController::class, 'edit']);
+Route::put('/post/{id}', [PostController::class, 'update']);
 
 Auth::routes();
 

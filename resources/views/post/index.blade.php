@@ -35,9 +35,10 @@
         <form action='' method='post'>
                 @csrf
 
-                @if(Route::current()->uri == )
-
+                @if(Route::current()->uri == "post/{id}")
+                @method('put')
                 @endif
+
                 <div class="mb-3 row">
                     <label for="judul" class="col-sm-2 col-form-label">Judul</label>
                     <div class="col-sm-10">
@@ -61,6 +62,7 @@
             </form>
         </div>
         <!-- AKHIR FORM -->
+        @if(Route::current()->uri == "post/{id}")
 
         <!-- START DATA -->
         <div class="my-3 p-3 bg-body rounded shadow-sm">
@@ -70,20 +72,20 @@
                         <th class="col-md-1">No</th>
                         <th class="col-md-4">Judul</th>
                         <th class="col-md-3">Konten</th>
-                        <th class="col-md-2">TGL Publikasi</th>
+                        <th class="col-md-2">Tgl Publikasi</th>
                         <th class="col-md-2">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($data as $item)
                     <tr>
-                        <td>{{$item['id']}}</td>
+                        <td>1</td>
                         <td>{{$item['title']}}</td>
                         <td>{{$item['content']}}</td>
                         <td>{{date('d/m/Y',strtotime($item['created_at']))}}</td>
                         <td>
                             <a href="{{url('post/'. $item['id'])}}" class="btn btn-warning btn-sm">Edit</a>
-                            <form action="{{url('post/'.$item['id'])}}" method="post" onsubmit="return confirm 
+                            <form action="{{url('post/'. $item['id'])}}" method="post" onsubmit="return confirm 
                             ('Apakah yakin akan melakukan pengahapusan data')"
                             class="d-inline">
                             @csrf
@@ -99,6 +101,7 @@
 
         </div>
         <!-- AKHIR DATA -->
+        @endif
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">

@@ -49,7 +49,7 @@ class PostController extends Controller
     }
 
     
-    public function edit(string $id)
+    public function edit($id)
     {
         $client = new Client();
         $url = "http://localhost:8000/posts/$id";
@@ -65,7 +65,7 @@ class PostController extends Controller
         }
     }
  
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     { 
         $title = $request ->title;
         $content = $request ->content;
