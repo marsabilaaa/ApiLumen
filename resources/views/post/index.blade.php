@@ -70,7 +70,7 @@
                         <th class="col-md-1">No</th>
                         <th class="col-md-4">Judul</th>
                         <th class="col-md-3">Konten</th>
-                        <th class="col-md-2">Tanggal Publikasi</th>
+                        <th class="col-md-2">TGL Publikasi</th>
                         <th class="col-md-2">Aksi</th>
                     </tr>
                 </thead>
