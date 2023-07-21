@@ -90,14 +90,20 @@
                         <td>{{$item['content']}}</td>
                         <td>{{date('d/m/Y',strtotime($item['created_at']))}}</td>
                         <td>
+                            <a href="{{ route('post.view', $item['id'] ) }}" class="btn btn-success btn-sm">View</a>
                             <a href="{{url('post/'. $item['id'])}}" class="btn btn-warning btn-sm">Edit</a>
+                           
+                            @can('delete posts', Post::class)
                             <form action="{{url('post/'. $item['id'])}}" method="post" onsubmit="return confirm 
                             ('Apakah yakin akan melakukan pengahapusan data')"
                             class="d-inline">
                             @csrf
                             @method('delete')
                             <button type="submit" name="submit" class="btn btn-danger btn-sm">Delete</button>
+                            @endcan
+                            
                         </td>
+
                     </tr>
                     <?php $i++ ?>
                     @endforeach

@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view posts', ['only' => ['index']]);
+        $this->middleware('permission:create posts', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit posts', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete posts', ['only' => ['destroy']]);
+    }
+    
     public function index()
     {
         $client = new Client();
@@ -18,6 +26,32 @@ class PostController extends Controller
         
         //dd($data);
         return view('post.index',['data'=>$data]);
+    }
+
+    public function user()
+    {
+        $client = new Client();
+        $url = "http://localhost:8000/posts";
+        $response = $client -> request('GET', $url);
+        $content = $response->getBody()->getContents();
+        $contentArray = json_decode($content,true);
+        $data = $contentArray['data'];
+        
+        //dd($data);
+        return view('post.show',['data'=>$data]);
+    }
+
+    public function view($id)
+    {
+        $client = new Client();
+        $url = "http://localhost:8000/posts/$id";
+        $response = $client -> request('GET', $url);
+        $content = $response->getBody()->getContents();
+        $contentArray = json_decode($content,true);
+        $data = $contentArray['data'];
+        
+        //dd($data);
+        return view('post.view',['data'=>$data]);
     }
 
     public function store(Request $request)
