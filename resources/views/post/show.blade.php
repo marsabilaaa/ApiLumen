@@ -18,17 +18,23 @@
 			</center>
 		</div>
 		<!-- akhir jumbotron -->
-		<div class="col-sm-6 col-md-3">
+     
+		 <div class="col-sm-6 col-md-3">
 			<div class="thumbnail">
-				<div class="caption">
-                    @foreach($data as $item)
-					<h3>{{$item['title']}}</h3>
-					<p>{{$item['content']}}</p>
-					<p><a href="{{ route('post.view', $item['id'] ) }}" class="btn btn-primary" role="button">Lihat</a></p>
-                    @endforeach
+                <div class="row">
+                @foreach($data as $item)
+				<div class="card" >
+                    <div class="card-body">
+                    
+                    <h3>{{$item['title']}}</h3>
+                    <p>{{ substr($item['content'], 0, 100) . (strlen($item['content']) > 100 ? '...' : '') }}</p>
+                    <p><a href="{{ route('post.view', $item['id']) }}" class="btn btn-primary" role="button">Lihat</a></p>
+                    </div>
 				</div>
+                @endforeach
+                </div>
 			</div>
-		</div>
+		</div> 
  
  
 	</div>

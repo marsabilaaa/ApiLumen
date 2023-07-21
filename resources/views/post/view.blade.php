@@ -5,17 +5,16 @@
 <html>
 <head>
     <title>view</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body>
 
 <div class="container">
-    
+    <center>
     <h1 class="mt-4">{{ $data['title'] }}</h1>
-
+    <p><strong>tanggal:</strong> {{date('d/m/Y',strtotime($data['created_at']))}}</p>
+    </center>
     <div class="card">
         <div class="card-body">
-            <p><strong>tanggal:</strong> {{date('d/m/Y',strtotime($data['created_at']))}}</p>
             <p> {{ $data['content'] }}</p>
         </div>
     </div>

@@ -87,7 +87,7 @@
                     <tr>
                         <td>{{ $i }}</td>
                         <td>{{$item['title']}}</td>
-                        <td>{{$item['content']}}</td>
+                        <td>{{ substr($item['content'], 0, 70) . (strlen($item['content']) > 70 ? '...' : '') }}</td>
                         <td>{{date('d/m/Y',strtotime($item['created_at']))}}</td>
                         <td>
                             <a href="{{ route('post.view', $item['id'] ) }}" class="btn btn-success btn-sm">View</a>

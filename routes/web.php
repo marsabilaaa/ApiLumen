@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/post/view/{id}', [PostController::class, 'view'])-> name('post.view');
-Route::get('/user', [PostController::class, 'user']);
+Route::get('/user', [PostController::class, 'user'])-> name('post.show');
 Route::get('/post', [PostController::class, 'index'])->name('post');
 Route::post('/post', [PostController::class, 'store']);
 Route::delete('/post/{id}', [PostController::class, 'destroy']);
